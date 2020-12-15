@@ -22,7 +22,7 @@ class MidtransController extends Controller
 
     public function charge(Request $request){
         Log::info('Midtrans Charge Start ====== ');
-        Log::info('Midtrans Request : '.$request->all());
+        Log::info('Midtrans Request : '.json_encode($request->all()));
         return "tokenResponse";
     }
 
