@@ -21,24 +21,28 @@ class MidtransController extends Controller
     //
 
     public function charge(Request $request){
+
         Log::info('Midtrans Request : '.json_encode($request->all()));
+        $serverKey = "SB-Mid-server-FZ3hGmsoInZ4vRDDuLnW1lVZ";
+        $authString = base64_encode($serverKey);
 
-        $client = new \GuzzleHttp\Client();
-        $response = $client->request('GET', 'https://api.github.com/repos/guzzle/guzzle');
+        $headers = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
+            'Authorization' => 'Basic '.$authString,
+        ];
 
-        echo $response->getStatusCode(); // 200
-        echo $response->getHeaderLine('content-type'); // 'application/json; charset=utf8'
-        echo $response->getBody(); // '{"id": 1420053, "name": "guzzle", ...}'
+        $client = new \GuzzleHttp\Client([
+            'headers' => $headers
+        ]);
 
-        // Send an asynchronous request.
-        $request = new \GuzzleHttp\Psr7\Request('GET', 'http://httpbin.org');
-        $promise = $client->sendAsync($request)->then(function ($response) {
-            echo 'I completed! ' . $response->getBody();
-        });
+        $response = $client->request('POST', 'https://app.sandbox.midtrans.com/snap/v1/transactions', [
+            'body' => $request->all()
+        ]);
 
-        $promise->wait();
+        Log::info('Midtrans Response : '.json_encode($response->getBody()->getContents()));
 
-        return "tokenResponse";
+        return $response->getBody()->getContents();
     }
 
     public function notification_handling(Request $request)
