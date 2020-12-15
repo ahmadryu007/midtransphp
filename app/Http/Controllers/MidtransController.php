@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use Log;
 use Illuminate\Http\Request;
+
 
 class MidtransController extends Controller
 {
