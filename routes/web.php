@@ -21,4 +21,4 @@ $router->get('/payment/finish', 'MidtransController@payment_finish');
 $router->get('/payment/unfinish', 'MidtransController@payment_unfinish');
 $router->get('/payment/error', 'MidtransController@payment_error');
 
-$router->get('/charge', 'MidtransController@payment_error');
+$router->post('/charge', 'MidtransController@charge');
