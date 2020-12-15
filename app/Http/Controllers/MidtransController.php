@@ -17,6 +17,10 @@ class MidtransController extends Controller
 
     //
 
+    public function charge(Request $request){
+        return "tokenResponse";
+    }
+
     public function notification_handling(Request $request)
     {
         return $request->all();
