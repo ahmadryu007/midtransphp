@@ -47,21 +47,25 @@ class MidtransController extends Controller
 
     public function notification_handling(Request $request)
     {
+        Log::info('Midtrans Request : '.json_encode($request->all()));
         return $request->all();
     }
 
     public function payment_finish(Request $request)
     {
+        Log::info('Midtrans Request : '.json_encode($request->all()));
         return $request->all();
     }
 
     public function payment_unfinish(Request $request)
     {
+        Log::info('Midtrans Request : '.json_encode($request->all()));
         return $request->all();
     }
 
     public function payment_error(Request $request)
     {
+        Log::info('Midtrans Request : '.json_encode($request->all()));
         return $request->all();
     }
 
