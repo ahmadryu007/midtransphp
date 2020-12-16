@@ -15,10 +15,10 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/notification/handling', 'MidtransController@notification_handling');
+$router->post('/notification/handling', 'MidtransController@notification_handling');
 
-$router->get('/payment/finish', 'MidtransController@payment_finish');
-$router->get('/payment/unfinish', 'MidtransController@payment_unfinish');
-$router->get('/payment/error', 'MidtransController@payment_error');
+$router->post('/payment/finish', 'MidtransController@payment_finish');
+$router->post('/payment/unfinish', 'MidtransController@payment_unfinish');
+$router->post('/payment/error', 'MidtransController@payment_error');
 
 $router->post('/charge', 'MidtransController@charge');
