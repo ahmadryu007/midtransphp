@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Log;
 use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
 
 
 class MidtransController extends Controller
@@ -40,12 +39,10 @@ class MidtransController extends Controller
         $response = $client->request('POST', 'https://app.sandbox.midtrans.com/snap/v1/transactions', [
             'body' => json_encode($request->all())
         ]);
-        
-        $responseValue = $response->getBody();
-        Log::info('Midtrans Response : '.json_encode($responseValue->getContents()));
 
-        //return new JsonResponse($response);
-        return response()->json(['data' => json_encode($responseValue->getContents()), 'code' => '200']);
+        //Log::info('Midtrans Response : '.json_encode($response->getBody()->getContents()));
+
+        return response()->json($response->getBody()->getContents());
     }
 
     public function notification_handling(Request $request)
