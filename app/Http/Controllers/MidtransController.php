@@ -41,8 +41,8 @@ class MidtransController extends Controller
             'body' => json_encode($request->all())
         ]);
         
-        $responseValue = $response->getBody()->getContents();
-        Log::info('Midtrans Response : '.json_encode($responseValue));
+        $responseValue = $response->getBody();
+        Log::info('Midtrans Response : '.json_encode($responseValue->getContents()));
 
         return new JsonResponse($responseValue);
     }
