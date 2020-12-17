@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Log;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
 
 class MidtransController extends Controller
@@ -42,7 +43,7 @@ class MidtransController extends Controller
 
         Log::info('Midtrans Response : '.json_encode($response->getBody()->getContents()));
 
-        return response()->json($response->getBody()->getContents());
+        return new JsonResponse($response->getBody()->getContents());
     }
 
     public function notification_handling(Request $request)
