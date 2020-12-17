@@ -40,10 +40,11 @@ class MidtransController extends Controller
         $response = $client->request('POST', 'https://app.sandbox.midtrans.com/snap/v1/transactions', [
             'body' => json_encode($request->all())
         ]);
+        
+        $responseValue = $response->getBody()->getContents();
+        Log::info('Midtrans Response : '.json_encode($responseValue));
 
-        Log::info('Midtrans Response : '.json_encode($response->getBody()->getContents()));
-
-        return new JsonResponse($response->getBody()->getContents());
+        return new JsonResponse($responseValue);
     }
 
     public function notification_handling(Request $request)
