@@ -44,7 +44,8 @@ class MidtransController extends Controller
         $responseValue = $response->getBody();
         Log::info('Midtrans Response : '.json_encode($responseValue->getContents()));
 
-        return new JsonResponse($response);
+        //return new JsonResponse($response);
+        return response()->json(['message' => $message, 'code' => $code], $code);
     }
 
     public function notification_handling(Request $request)
