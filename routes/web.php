@@ -15,6 +15,10 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+$app->get('/qiscuss', function ()  {
+    return view('qiscuss', []);
+});
+
 $router->post('/notification/handling', 'MidtransController@notification_handling');
 
 $router->post('/payment/finish', 'MidtransController@payment_finish');
