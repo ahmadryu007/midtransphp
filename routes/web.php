@@ -15,7 +15,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$app->get('/qiscuss', function ()  {
+$router->get('/qiscuss', function ()  {
     return view('qiscuss', []);
 });
 
