@@ -1,6 +1,6 @@
 <html>
     <body>
-        <h1>Hello, <?php echo $name; ?></h1>
+        <h1>Hello, Qiscuss Agent</h1>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 var s,t; s = document.createElement('script'); s.type = 'text/javascript';
